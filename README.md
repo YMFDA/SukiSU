@@ -5,27 +5,95 @@
 # Action-Build
 **```Build OnePlus SukiSU Ultra KPM Kernel```**
  
+<details>
+<summary><strong>点击查看如何fork项目</strong></summary>
+<img src="https://github.com/Numbersf/Action-Build/blob/main/pic%2Fmake.gif" width="500"/>
+</details>
+ 
+<details>
+<summary><strong>点击查看如何同步fork后的项目到最新</strong></summary>
+<img src="https://github.com/Numbersf/Action-Build/blob/main/pic%2Fsyncfork.png" width="150"/>
+<summary>请及时同步!某些更新可能会导致旧版本失效!</summary>
+</details>
+ 
 # 公告
  
 ------
 > [!NOTE]
->配置文件中的``_x``后缀是你正在使用系统版本的代号。比如``_w Android16、_v Android15、_u Android14、_t Android13、_s Android12``,以此类推-**倒序字母小写**。而无后缀的一般是一个机型的出厂``Android``版本。目前我只在预选中添加了``Android15``的机型也就是``_v``后缀,如果你在使用其他的安卓版本,请手动将``_v``改成其他代号
+>配置文件中的``_x``后缀是你正在使用系统版本的代号。**倒序字母小写**。而无后缀的一般是一个机型的出厂``Android``版本。目前我只在预选中添加了``Android15``的机型也就是``_v``后缀,如果你在使用其他的安卓版本,请手动将``_v``改成其他代号
+> <details>
+> <summary><strong>点击查看详细的版本代号(部分未来可能会有改变)</strong></summary>
+>
+>>`_z Android19 (Zebra Cake)`
+>
+>>`_y Android18 (Yogurt Parfait)`
+>
+>>`_x Android17 (Xmas Pudding)`
+>
+>>`_w Android16 (Wedding Cake)`<strong>
+>
+>>`_v Android15 (Vanilla Ice Cream)`
+>
+>>`_u Android14 (Upside Down Cake)`
+>
+>>`_t Android13 (Tiramisu)`
+>
+>>`_s Android12 (Snow Cone)`</strong>
+>
+>>`_r Android11 (Red Velvet Cake)`
+>
+>>`_q Android10 (Quince Tart)`
+>
+>>`_p Android9 (Pie)`
+>
+>>`_o Android8 (Oreo)`
+>
+>>`_n Android7 (Nougat)`
+>
+>>`_m Android6 (Marshmallow)`
+>
+>>`_l Android5 (Lollipop)`
+>
+>>`_k Android4.4 (KitKat)`
+>
+>>`_j Android4.3–4.1 (Jelly Bean)`
+>
+>>`_i Android4.0 (Ice Cream Sandwich)`
+>
+>>`_h Android3.x (Honeycomb)`
+>
+>>`_g Android2.3 (Gingerbread)`
+>
+>>`_f Android2.2 (FroYo)`
+>
+>>`_e Android2.1 (Eclair)`
+>
+>>`_d Android1.6 (Donut)`
+>
+>>`_c Android1.5 (Cupcake)`
+>
+> </details>
  
 ------
 > [!IMPORTANT]
 >关于要跑多久的问题 一般来说越往前的机型跑的速度越快
->>***使用极速编译clang make***
+> <details>
+> <summary><strong>点击查看使用极速编译clang make的用时</strong></summary>
+>
 >>>>0.已知的特殊机型:部分非A15机型(eg:一加11-A14;一加11-A13)
 > 
->>>`1h12min~1h17min,max:?`
+>>>`1h8min~1h17min,max:1h17min`
 >>>>0.其他所有机型
 > 
 >>>`22min~31min,max:35min`
+> </details>
 > 
->>***使用官方build.sh***
->>>>0.已知的特殊机型:部分非A15机型(eg:一加11-A14;一加11-A13不支持)
+> <details>
+> <summary><strong>点击查看使用官方build.sh的用时</strong></summary>
+>
+>>>>0.已知的特殊机型:部分非A15机型(eg:一加11-A14;一加11-A13)
 > 
->>>`1h22min~1h28min,max:?`
+>>>`1h14min~1h28min,max:1h28min`
 >>>>1.sm8450、sm8475、sm8550
 > 
 >>>`30~35min,max:45min`
@@ -36,6 +104,7 @@
 > 
 >>>`2h1min~2h22min,max:2h45min`
 >> 
+> </details>
 >
 >也就是说,如果你跑的时长超过了对应机型的最高时间,请尝试重新跑并查看``step``确保不是官方自己的问题
  
@@ -53,6 +122,8 @@
 ------
  
 # 更新日志
+--修复内核版本介于`5.15.0-5.15.123`之间官方脚本跑不出,极速编译结果有问题[@zzh20188](https://github.com/zzh20188)  
+--支持`BBR`,默认不开启  
 --允许自定义内核后缀  <- **`beta`**  
 ```
 1.当自定义内核后缀为空时,使用随机字符串,不再是默认的“x.xx.xxx-androidxx-8-o-g3b1e97b8b29f”
