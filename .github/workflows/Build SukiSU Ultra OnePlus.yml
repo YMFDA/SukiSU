@@ -504,6 +504,7 @@ jobs:
 
           # 复制 Image 到同一个路径方便直接调用
           if [ -n "$image_path" ] && [ -f "$image_path" ]; then
+            echo "Image file finally located at: $image_path"
             mkdir -p "$dir1"
             if [ "$(realpath "$image_path")" != "$(realpath "$dir1"Image)" ]; then
               cp "$image_path" "$dir1"
@@ -661,7 +662,7 @@ jobs:
             grep "browser_download_url" | grep "ZRAM-Module-.*\.zip" | cut -d '"' -f 4 | xargs wget -N
           unzip "$(ls -t ZRAM-Module-*.zip | head -1)" -d ZRAM-Module
           zram1="./kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/dist/"
-          zram2="./kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/dist/"
+          zram2="./kernel_workspace/kernel_platform/out/msm-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.BUILD_METHOD }}/dist/"
           zram3="./kernel_workspace/kernel_platform/out/dist/"
           zram4="./kernel_workspace/kernel_platform/out/vendor/oplus/kernel/mm/"
           zram5="./kernel_workspace/device/qcom/${{ github.event.inputs.CPUD }}-kernel/vendor_dlkm/"
@@ -677,7 +678,7 @@ jobs:
             zram_path=$(find "./kernel_workspace" -name "zram.ko" | head -n 1)
           fi
           if [ -n "$zram_path" ] && [ -f "$zram_path" ]; then
-            echo "ZRAM module file located at: $zram_path"
+            echo "ZRAM module file finally located at: $zram_path"
             mkdir -p "$(dirname "$target")"
             if [ "$(realpath "$zram_path")" != "$(realpath "$target")" ]; then
               cp "$zram_path" "$target"
@@ -693,5 +694,5 @@ jobs:
         if: ${{ github.event.inputs.ZRAM == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: ZRAM-Module
+          name: ZRAM-Module_${{ github.event.inputs.KERNEL_VERSION }}_${{ steps.feil_clean.outputs.value }}
           path: ZRAM-Module/*
